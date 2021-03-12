@@ -1,0 +1,26 @@
+<app-header
+  [products]="shoppingCart"
+  [showCartList]="showCartList"
+  (onToggle)="toggle($event)"
+></app-header>
+
+<cart-list
+  [show]="showCartList"
+  [items]="shoppingCart"
+  (onClose)="toggle(false)"
+  (onRemove)="removeItem($event)"
+></cart-list>
+
+<div class="main">
+  
+  <!-- <pre>
+    {{ shoppingCart | json }}
+  </pre> -->
+  
+  <product-item
+    *ngFor="let product of productsInStock"
+    [product]="product"
+    (onAddCart)="addItem($event)"
+  >
+  </product-item>
+</div>
